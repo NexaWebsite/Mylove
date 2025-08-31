@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 برای عشق زندگیم 💕</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* انیمیشن پس‌زمینه */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-heart {
+            position: absolute;
+            color: rgba(255, 182, 193, 0.7);
+            font-size: 20px;
+            animation: floatUp 8s infinite linear;
+        }
+        
+        .floating-star {
+            position: absolute;
+            color: rgba(255, 215, 0, 0.8);
+            font-size: 16px;
+            animation: twinkle 2s infinite ease-in-out alternate;
+        }
+        
+        @keyframes floatUp {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes twinkle {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.7; }
+            100% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+        }
+        
+        /* محتوای اصلی */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .main-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: #d63384;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            animation: heartbeat 2s infinite;
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #6f42c1;
+            margin-bottom: 30px;
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* کارت‌های عاشقانه */
+        .love-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        .love-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 182, 193, 0.3);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .love-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(214, 51, 132, 0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: #d63384;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .card-text {
+            color: #6c757d;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* پیام‌های عاشقانه */
+        .love-messages {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 50px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .message-container {
+            position: relative;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .love-message {
+            font-size: 1.8rem;
+            color: #d63384;
+            font-weight: 500;
+            line-height: 1.6;
+            opacity: 0;
+            position: absolute;
+            transition: all 1s ease-in-out;
+        }
+        
+        .love-message.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .message-author {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #6f42c1;
+            font-style: italic;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* گالری عکس */
+        .photo-gallery {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 50px;
+            animation: slideInLeft 1s ease-out;
+        }
+        
+        .gallery-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #d63384;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .photo-placeholder {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .photo-placeholder:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .photo-placeholder:hover::before {
+            left: 100%;
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* تایمر عاشقی */
+        .love-timer {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideInRight 1s ease-out;
+        }
+        
+        .timer-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .timer-display {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .timer-unit {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 100px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .timer-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            display: block;
+        }
+        
+        .timer-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        /* دکمه‌های تعاملی */
+        .interactive-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .love-button {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(238, 90, 36, 0.3);
+        }
+        
+        .love-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(238, 90, 36, 0.4);
+        }
+        
+        .love-button:active {
+            transform: translateY(0);
+        }
+        
+        /* فوتر */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            color: #6f42c1;
+            font-size: 1.1rem;
+        }
+        
+        /* ریسپانسیو */
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            
+            .love-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .love-message {
+                font-size: 1.4rem;
+            }
+            
+            .timer-display {
+                gap: 10px;
+            }
+            
+            .timer-unit {
+                min-width: 80px;
+                padding: 15px;
+            }
+            
+            .interactive-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        
+        /* افکت کلیک قلب */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            z-index: 1000;
+            font-size: 2rem;
+            color: #ff6b6b;
+            animation: heartPop 1s ease-out forwards;
+        }
+        
+        @keyframes heartPop {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.2) rotate(180deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- انیمیشن پس‌زمینه -->
+    <div class="background-animation" id="backgroundAnimation"></div>
+    
+    <div class="container">
+        <!-- هدر -->
+        <div class="header">
+            <h1 class="main-title">💕 برای عشق زندگیم 💕</h1>
+            <p class="subtitle">تو نور چشمان منی، تو عشق قلب منی</p>
+        </div>
+        
+        <!-- کارت‌های عاشقانه -->
+        <div class="love-cards">
+            <div class="love-card">
+                <span class="card-icon">💖</span>
+                <h3 class="card-title">عشق بی‌پایان</h3>
+                <p class="card-text">تو مثل ستاره‌ای که هر شب راهم رو روشن می‌کنی. عشق من به تو مثل دریا بی‌انتهاست.</p>
+            </div>
+            
+            <div class="love-card">
+                <span class="card-icon">🌹</span>
+                <h3 class="card-title">زیبایی تو</h3>
+                <p class="card-text">لبخندت مثل طلوع خورشیده، چشمانت مثل ستاره‌های شب. تو زیباترین هدیه زندگی منی.</p>
+            </div>
+            
+            <div class="love-card">
+                <span class="card-icon">✨</span>
+                <h3 class="card-title">آینده ما</h3>
+                <p class="card-text">می‌خوام دستت رو بگیرم و تا ابد با هم راه بریم. تو و من، یک عشق، یک زندگی.</p>
+            </div>
+        </div>
+        
+        <!-- پیام‌های عاشقانه -->
+        <div class="love-messages">
+            <div class="message-container">
+                <div class="love-message active" id="message1">
+                    "تو نفس منی، تو زندگی منی، تو همه چیز منی 💕"
+                </div>
+                <div class="love-message" id="message2">
+                    "هر روز که می‌گذره، بیشتر عاشقت می‌شم 🌹"
+                </div>
+                <div class="love-message" id="message3">
+                    "تو بهترین اتفاق زندگی منی، عشقم 💖"
+                </div>
+                <div class="love-message" id="message4">
+                    "دلم برات تنگ شده، نمی‌تونم بدون تو باشم ✨"
+                </div>
+                <div class="love-message" id="message5">
+                    "تو ملکه قلب منی، تا ابد عاشقتم 👑"
+                </div>
+            </div>
+            <div class="message-author">با تمام عشق، از کسی که دیوونه‌ت شده 💕</div>
+        </div>
+        
+        <!-- گالری عکس -->
+        <div class="photo-gallery">
+            <h2 class="gallery-title">خاطرات زیبای ما 📸</h2>
+            <div class="photo-grid">
+                <div class="photo-placeholder" onclick="showPhotoMessage(1)">
+                    📷
+                </div>
+                <div class="photo-placeholder" onclick="showPhotoMessage(2)">
+                    💕
+                </div>
+                <div class="photo-placeholder" onclick="showPhotoMessage(3)">
+                    🌹
+                </div>
+                <div class="photo-placeholder" onclick="showPhotoMessage(4)">
+                    ✨
+                </div>
+            </div>
+        </div>
+        
+        <!-- تایمر عاشقی -->
+        <div class="love-timer">
+            <h2 class="timer-title">از وقتی عاشقت شدم... ⏰</h2>
+            <div class="timer-display" id="loveTimer">
+                <div class="timer-unit">
+                    <span class="timer-number" id="days">0</span>
+                    <span class="timer-label">روز</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="hours">0</span>
+                    <span class="timer-label">ساعت</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="minutes">0</span>
+                    <span class="timer-label">دقیقه</span>
+                </div>
+                <div class="timer-unit">
+                    <span class="timer-number" id="seconds">0</span>
+                    <span class="timer-label">ثانیه</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- دکمه‌های تعاملی -->
+        <div class="interactive-buttons">
+            <button class="love-button" onclick="showSurprise()">💖 سورپرایز عاشقانه</button>
+            <button class="love-button" onclick="sendLoveMessage()">💌 پیام عاشقانه</button>
+            <button class="love-button" onclick="playLoveAnimation()">✨ جادوی عشق</button>
+        </div>
+        
+        <!-- فوتر -->
+        <div class="footer">
+            <p>از طرف : علی محمد کریمی برای شما</p>
+            <p>تو همیشه در قلب منی 💖</p>
+        </div>
+    </div>
+
+    <script>
+        class LoveWebsite {
+            constructor() {
+                this.currentMessage = 0;
+                this.messages = 5;
+                this.loveStartDate = new Date('2023-01-01'); // تاریخ شروع عشق رو تغییر بدید
+                
+                this.init();
+            }
+            
+            init() {
+                this.createBackgroundAnimation();
+                this.startMessageRotation();
+                this.startLoveTimer();
+                this.setupClickEffects();
+            }
+            
+            createBackgroundAnimation() {
+                const container = document.getElementById('backgroundAnimation');
+                
+                // ایجاد قلب‌های پرنده
+                setInterval(() => {
+                    this.createFloatingHeart(container);
+                }, 2000);
+                
+                // ایجاد ستاره‌های چشمک‌زن
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        this.createTwinklingStar(container);
+                    }, i * 500);
+                }
+            }
+            
+            createFloatingHeart(container) {
+                const heart = document.createElement('div');
+                heart.className = 'floating-heart';
+                heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+                
+                container.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 10000);
+            }
+            
+            createTwinklingStar(container) {
+                const star = document.createElement('div');
+                star.className = 'floating-star';
+                star.innerHTML = '✨';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                
+                container.appendChild(star);
+            }
+            
+            startMessageRotation() {
+                setInterval(() => {
+                    const currentMsg = document.getElementById(`message${this.currentMessage + 1}`);
+                    currentMsg.classList.remove('active');
+                    
+                    this.currentMessage = (this.currentMessage + 1) % this.messages;
+                    
+                    const nextMsg = document.getElementById(`message${this.currentMessage + 1}`);
+                    nextMsg.classList.add('active');
+                }, 4000);
+            }
+            
+            startLoveTimer() {
+                const updateTimer = () => {
+                    const now = new Date();
+                    const diff = now - this.loveStartDate;
+                    
+                    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                    
+                    document.getElementById('days').textContent = days;
+                    document.getElementById('hours').textContent = hours;
+                    document.getElementById('minutes').textContent = minutes;
+                    document.getElementById('seconds').textContent = seconds;
+                };
+                
+                updateTimer();
+                setInterval(updateTimer, 1000);
+            }
+            
+            setupClickEffects() {
+                document.addEventListener('click', (e) => {
+                    this.createClickHeart(e.clientX, e.clientY);
+                });
+            }
+            
+            createClickHeart(x, y) {
+                const heart = document.createElement('div');
+                heart.className = 'click-heart';
+                heart.innerHTML = '💕';
+                heart.style.left = x + 'px';
+                heart.style.top = y + 'px';
+                
+                document.body.appendChild(heart);
+                
+                setTimeout(() => {
+                    heart.remove();
+                }, 1000);
+            }
+        }
+        
+        // توابع تعاملی
+        function showSurprise() {
+            const surprises = [
+                'تو زیباترین دختر دنیایی! 💖',
+                'هر روز بیشتر عاشقت می‌شم! 🌹',
+                'تو نور زندگی منی! ✨',
+                'دوست دارم تا ابد کنارت باشم! 💕',
+                'تو بهترین اتفاق زندگیمی! 💝'
+            ];
+            
+            const randomSurprise = surprises[Math.floor(Math.random() * surprises.length)];
+            alert(randomSurprise);
+            
+            // ایجاد انفجار قلب
+            for (let i = 0; i < 10; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = '💖';
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = Math.random() * window.innerHeight + 'px';
+                    heart.style.fontSize = '2rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'heartPop 2s ease-out forwards';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 2000);
+                }, i * 200);
+            }
+        }
+        
+        function sendLoveMessage() {
+            const messages = [
+                'پیامت رو دریافت کردم! منم عاشقتم! 💕',
+                'دلم برات تنگ شده بود! 💖',
+                'تو بهترین چیزی که تو زندگیم اتفاق افتاده! 🌹',
+                'نمی‌تونم صبر کنم تا ببینمت! ✨',
+                'عشقت منو زنده نگه می‌داره! 💝'
+            ];
+            
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            
+            // شبیه‌سازی دریافت پیام
+            setTimeout(() => {
+                alert('پیام جدید از عشقت: ' + randomMessage);
+            }, 1000);
+            
+            alert('پیام عاشقانه‌ت ارسال شد! 💌');
+        }
+        
+        function playLoveAnimation() {
+            document.body.style.animation = 'none';
+            document.body.offsetHeight; // trigger reflow
+            document.body.style.animation = 'heartbeat 0.5s ease-in-out 3';
+            
+            // تغییر رنگ پس‌زمینه موقتی
+            const originalBg = document.body.style.background;
+            document.body.style.background = 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 50%, #ff9ff3 100%)';
+            
+            setTimeout(() => {
+                document.body.style.background = originalBg;
+            }, 2000);
+            
+            // ایجاد بارش قلب
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.innerHTML = ['💕', '💖', '💗', '💝', '💘'][Math.floor(Math.random() * 5)];
+                    heart.style.position = 'fixed';
+                    heart.style.left = Math.random() * window.innerWidth + 'px';
+                    heart.style.top = '-50px';
+                    heart.style.fontSize = (1 + Math.random() * 2) + 'rem';
+                    heart.style.pointerEvents = 'none';
+                    heart.style.zIndex = '1000';
+                    heart.style.animation = 'floatUp 3s linear forwards';
+                    
+                    document.body.appendChild(heart);
+                    
+                    setTimeout(() => heart.remove(), 3000);
+                }, i * 100);
+            }
+        }
+        
+        function showPhotoMessage(photoNumber) {
+            const photoMessages = {
+                1: 'اینجا عکس اولین قرارمون می‌ذاریم! 📸💕',
+                2: 'اینجا عکس زیباترین لحظه‌هامون! 💖✨',
+                3: 'اینجا عکس‌های خنده‌هامون! 😊🌹',
+                4: 'اینجا عکس آینده زیبامون! 💍👫'
+            };
+            
+            alert(photoMessages[photoNumber]);
+        }
+        
+        // راه‌اندازی وبسایت
+        window.addEventListener('load', () => {
+            new LoveWebsite();
+        });
+        
+        // جلوگیری از کلیک راست
+        document.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            alert('این وبسایت با عشق ساخته شده! 💕');
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'977ebafa86d8f9db',t:'MTc1NjY2NjQwMy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
